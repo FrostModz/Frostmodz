@@ -1,122 +1,257 @@
-<!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frost Page ❄️</title>
+
+  <title>Frost Page</title>
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: Arial, sans-serif;
-      background: #0a0f1f;
+    }
+
+    body {
+      background: #050505;
       color: white;
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
+      overflow: hidden;
     }
 
-    /* Pantalla de bienvenida */
-    #pantalla-inicio {
+    /* Pantalla para entrar */
+    #tapScreen {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(10, 15, 31, 0.95);
+      inset: 0;
+      z-index: 100;
+      background: #050505;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      z-index: 999;
+      justify-content: center;
+      flex-direction: column;
       cursor: pointer;
-      padding: 20px;
+      transition: opacity 0.5s ease;
     }
 
-    #logo-frost {
+    #tapScreen h1 {
+      font-size: 26px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    #tapScreen p {
+      color: #aaa;
+      font-size: 15px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.4;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* Contenido principal */
+    #mainPage {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #mainLogo {
       width: 180px;
       max-width: 70%;
-      margin: 25px 0;
-      display: none;
-      border-radius: 8px;
+      opacity: 0;
+      transform: scale(0.7);
+      transition: all 0.8s ease;
     }
 
-    #mensaje-bienvenida {
-      font-size: 1.4rem;
-      line-height: 1.6;
-      margin-bottom: 30px;
-      display: none;
+    #mainLogo.show {
+      opacity: 1;
+      transform: scale(1);
     }
 
-    #boton-ok {
-      padding: 12px 35px;
-      font-size: 1.2rem;
-      background: #2563eb;
+    /* Bienvenida */
+    #welcome {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(8px);
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .welcomeBox {
+      width: 90%;
+      max-width: 400px;
+      background: #101010;
+      border: 1px solid #252525;
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(255,255,255,0.08);
+
+      animation: welcomeIn 0.5s ease;
+    }
+
+    @keyframes welcomeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .welcomeLogo {
+      width: 110px;
+      margin-bottom: 18px;
+    }
+
+    .welcomeBox h2 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .welcomeBox p {
+      color: #aaa;
+      font-size: 15px;
+      margin-bottom: 25px;
+    }
+
+    #okButton {
+      width: 100%;
       border: none;
-      border-radius: 6px;
-      color: white;
+      border-radius: 12px;
+      padding: 13px;
+      background: white;
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
-      display: none;
-      transition: background 0.3s;
+      transition: transform 0.2s ease;
     }
-    #boton-ok:hover { background: #1d4ed8; }
 
-    /* Contenido principal (después de bienvenida) */
-    #contenido-principal {
-      display: none;
+    #okButton:active {
+      transform: scale(0.96);
     }
   </style>
 </head>
+
 <body>
 
-  🎵 Audio de fondo:
-  <audio id="musica-fondo" loop>
+  <!-- Música -->
+  <audio id="music" loop preload="auto">
     <source src="https://files.catbox.moe/a8nvz7.mp3" type="audio/mpeg">
-  
+  </audio>
 
-  <!-- Pantalla de entrada -->
-  <div id="pantalla-inicio">
-    <p style="font-size: 1.5rem;">👆 Toca en la pantalla para entrar a la página web</p>
-    <img id="logo-frost" src="logo-frost.png" alt="Logo Frost Page">
-    <div id="mensaje-bienvenida">
-      ❄️ Bienvenido a Frost Page ❄️<br>
-      Tus mejores paneles gratis
-    </div>
-    <button id="boton-ok">OK</button>
+  <!-- Pantalla inicial -->
+  <div id="tapScreen">
+    <h1>Frost Page</h1>
+    <p>Toca en la pantalla para entrar</p>
   </div>
 
-  <!-- Lo que verás después de aceptar -->
-  <main id="contenido-principal">
-    <h1>¡Contenido principal aquí!</h1>
-    <p>Después me dirás qué más agrego.</p>
+  <!-- Página principal -->
+  <main id="mainPage">
+
+    <img
+      id="mainLogo"
+      src="logo-frost.png"
+      alt="Frost Logo"
+    >
+
   </main>
 
+  <!-- Ventana de bienvenida -->
+  <div id="welcome">
+
+    <div class="welcomeBox">
+
+      <img
+        class="welcomeLogo"
+        src="logo-frost.png"
+        alt="Frost Logo"
+      >
+
+      <h2>Bienvenido a Frost Page</h2>
+
+      <p>
+        Tus mejores paneles gratis
+      </p>
+
+      <button id="okButton">
+        OK
+      </button>
+
+    </div>
+
+  </div>
+
   <script>
-    const pantallaInicio = document.getElementById('pantalla-inicio');
-    const logo = document.getElementById('logo-frost');
-    const mensaje = document.getElementById('mensaje-bienvenida');
-    const btnOk = document.getElementById('boton-ok');
-    const musica = document.getElementById('musica-fondo');
-    const contenidoPrincipal = document.getElementById('contenido-principal');
 
-    // Al tocar la pantalla: arranca música y muestra resto
-    pantallaInicio.addEventListener('click', () => {
-      musica.play().catch(e => console.log("Error al reproducir:", e));
-      logo.style.display = 'block';
-      mensaje.style.display = 'block';
-      btnOk.style.display = 'inline-block';
+    const tapScreen = document.getElementById("tapScreen");
+    const music = document.getElementById("music");
+    const mainLogo = document.getElementById("mainLogo");
+    const welcome = document.getElementById("welcome");
+    const okButton = document.getElementById("okButton");
+
+    /* Entrar */
+    tapScreen.addEventListener("click", async () => {
+
+      /* La reproducción ocurre directamente dentro del toque */
+      try {
+        music.volume = 0.7;
+        await music.play();
+      } catch (error) {
+        console.log("No se pudo reproducir el audio:", error);
+      }
+
+      /* Ocultar pantalla inicial */
+      tapScreen.style.opacity = "0";
+
+      setTimeout(() => {
+        tapScreen.style.display = "none";
+
+        /* Mostrar logo */
+        mainLogo.classList.add("show");
+
+        /* Mostrar bienvenida */
+        setTimeout(() => {
+          welcome.style.display = "flex";
+        }, 700);
+
+      }, 500);
+
     });
 
-    // Botón OK: quita portada y muestra sitio
-    btnOk.addEventListener('click', (e) => {
-      e.stopPropagation();
-      pantallaInicio.style.display = 'none';
-      contenidoPrincipal.style.display = 'block';
+    /* Botón OK */
+    okButton.addEventListener("click", () => {
+
+      welcome.style.opacity = "0";
+      welcome.style.transition = "opacity 0.4s ease";
+
+      setTimeout(() => {
+        welcome.style.display = "none";
+      }, 400);
+
     });
+
   </script>
 
 </body>
-</html>
-
+        </html>
