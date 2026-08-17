@@ -1,53 +1,122 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frost Page</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frost Page ❄️</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #0a0f1f;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+    /* Pantalla de bienvenida */
+    #pantalla-inicio {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 15, 31, 0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      cursor: pointer;
+      padding: 20px;
+    }
 
-        img {
-            max-width: 280px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
-        }
+    #logo-frost {
+      width: 180px;
+      max-width: 70%;
+      margin: 25px 0;
+      display: none;
+      border-radius: 8px;
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            text-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
-            margin-bottom: 15px;
-        }
+    #mensaje-bienvenida {
+      font-size: 1.4rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      display: none;
+    }
 
-        p {
-            font-size: 1.3rem;
-            color: #a0d2ff;
-        }
-    </style>
+    #boton-ok {
+      padding: 12px 35px;
+      font-size: 1.2rem;
+      background: #2563eb;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      display: none;
+      transition: background 0.3s;
+    }
+    #boton-ok:hover { background: #1d4ed8; }
+
+    /* Contenido principal (después de bienvenida) */
+    #contenido-principal {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-    <!-- TU LOGO YA CON EL NOMBRE CORRECTO -->
-    <img src="logo-frost.png" alt="Logo Frost Modz">
 
-    <h1>👋 Bienvenido a Frost Page</h1>
-    <p>Tu espacio listo para usar ✨</p>
+  🎵 Audio de fondo:
+  <audio id="musica-fondo" loop>
+    <source src="https://files.catbox.moe/a8nvz7.mp3" type="audio/mpeg">
+  
+
+  <!-- Pantalla de entrada -->
+  <div id="pantalla-inicio">
+    <p style="font-size: 1.5rem;">👆 Toca en la pantalla para entrar a la página web</p>
+    <img id="logo-frost" src="logo-frost.png" alt="Logo Frost Page">
+    <div id="mensaje-bienvenida">
+      ❄️ Bienvenido a Frost Page ❄️<br>
+      Tus mejores paneles gratis
+    </div>
+    <button id="boton-ok">OK</button>
+  </div>
+
+  <!-- Lo que verás después de aceptar -->
+  <main id="contenido-principal">
+    <h1>¡Contenido principal aquí!</h1>
+    <p>Después me dirás qué más agrego.</p>
+  </main>
+
+  <script>
+    const pantallaInicio = document.getElementById('pantalla-inicio');
+    const logo = document.getElementById('logo-frost');
+    const mensaje = document.getElementById('mensaje-bienvenida');
+    const btnOk = document.getElementById('boton-ok');
+    const musica = document.getElementById('musica-fondo');
+    const contenidoPrincipal = document.getElementById('contenido-principal');
+
+    // Al tocar la pantalla: arranca música y muestra resto
+    pantallaInicio.addEventListener('click', () => {
+      musica.play().catch(e => console.log("Error al reproducir:", e));
+      logo.style.display = 'block';
+      mensaje.style.display = 'block';
+      btnOk.style.display = 'inline-block';
+    });
+
+    // Botón OK: quita portada y muestra sitio
+    btnOk.addEventListener('click', (e) => {
+      e.stopPropagation();
+      pantallaInicio.style.display = 'none';
+      contenidoPrincipal.style.display = 'block';
+    });
+  </script>
+
 </body>
 </html>
+
