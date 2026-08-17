@@ -1,9 +1,8 @@
-      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Frost Page</title>
 
   <style>
@@ -11,45 +10,118 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-      background: #050505;
-      color: white;
       min-height: 100vh;
       overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 35%, #123b55 0%, #07131d 28%, #020609 65%, #000 100%);
+      color: white;
     }
 
-    /* Pantalla para entrar */
+    /* =========================
+       PARTÍCULAS
+    ========================== */
+
+    .particles {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #8eeaff;
+      animation: float linear infinite;
+      opacity: .7;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      80% {
+        opacity: .8;
+      }
+
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
+    /* =========================
+       PANTALLA DE ENTRADA
+    ========================== */
+
     #tapScreen {
       position: fixed;
       inset: 0;
-      z-index: 100;
-      background: #050505;
+      z-index: 999;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       flex-direction: column;
-      cursor: pointer;
-      transition: opacity 0.5s ease;
+      background:
+        radial-gradient(circle, #123d55 0%, #02070b 55%, #000 100%);
+      transition: opacity 1s ease, visibility 1s ease;
     }
 
-    #tapScreen h1 {
-      font-size: 26px;
-      margin-bottom: 12px;
-      text-align: center;
+    .enterLogo {
+      width: 150px;
+      margin-bottom: 35px;
+      filter:
+        drop-shadow(0 0 10px #58dfff)
+        drop-shadow(0 0 30px #008cff);
+      animation: logoFloat 3s ease-in-out infinite;
     }
 
-    #tapScreen p {
-      color: #aaa;
-      font-size: 15px;
-      animation: pulse 1.5s infinite;
+    @keyframes logoFloat {
+      0%,100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-12px) scale(1.04);
+      }
     }
 
-    @keyframes pulse {
-      0%, 100% {
-        opacity: 0.4;
+    .enterTitle {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 10px #fff,
+        0 0 25px #1ecfff,
+        0 0 50px #0077ff;
+    }
+
+    .enterText {
+      margin-top: 14px;
+      color: #9bdfff;
+      letter-spacing: 2px;
+      font-size: 14px;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%,100% {
+        opacity: .35;
       }
 
       50% {
@@ -57,59 +129,269 @@
       }
     }
 
-    /* Contenido principal */
+    .enterLine {
+      width: 180px;
+      height: 2px;
+      margin-top: 25px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #58eaff,
+        transparent
+      );
+      box-shadow: 0 0 15px #00bfff;
+    }
+
+    /* =========================
+       PÁGINA
+    ========================== */
+
     #mainPage {
-      min-height: 100vh;
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       flex-direction: column;
     }
 
+    .glowCircle {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: #00aaff;
+      filter: blur(100px);
+      opacity: .12;
+      animation: glow 4s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        transform: scale(.8);
+        opacity: .08;
+      }
+
+      to {
+        transform: scale(1.2);
+        opacity: .2;
+      }
+    }
+
     #mainLogo {
-      width: 180px;
-      max-width: 70%;
+      position: relative;
+      width: 210px;
       opacity: 0;
-      transform: scale(0.7);
-      transition: all 0.8s ease;
+      transform: scale(.5) rotate(-8deg);
+      transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(.17,.67,.3,1.3);
+      filter:
+        drop-shadow(0 0 10px #5deaff)
+        drop-shadow(0 0 35px #0077ff);
     }
 
     #mainLogo.show {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1) rotate(0);
     }
 
-    /* Bienvenida */
+    .frostTitle {
+      margin-top: 25px;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 6px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 1s ease;
+      text-shadow:
+        0 0 10px white,
+        0 0 25px #00d9ff,
+        0 0 45px #006aff;
+    }
+
+    .frostTitle.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       WELCOME
+    ========================== */
+
     #welcome {
       position: fixed;
       inset: 0;
-      z-index: 50;
-      background: rgba(0, 0, 0, 0.88);
-      backdrop-filter: blur(8px);
-
+      z-index: 500;
       display: none;
       align-items: center;
       justify-content: center;
+      background: rgba(0,0,0,.72);
+      backdrop-filter: blur(14px);
       padding: 20px;
     }
 
     .welcomeBox {
-      width: 90%;
-      max-width: 400px;
-      background: #101010;
-      border: 1px solid #252525;
-      border-radius: 20px;
-      padding: 30px 20px;
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      padding: 38px 25px;
       text-align: center;
-      box-shadow: 0 0 40px rgba(255,255,255,0.08);
+      border-radius: 25px;
 
-      animation: welcomeIn 0.5s ease;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(20,60,80,.8),
+          rgba(2,8,13,.95)
+        );
+
+      border: 1px solid rgba(85,220,255,.4);
+
+      box-shadow:
+        0 0 20px rgba(0,200,255,.15),
+        0 0 70px rgba(0,120,255,.12),
+        inset 0 0 30px rgba(0,180,255,.05);
+
+      animation: welcomeIn .7s cubic-bezier(.17,.67,.3,1.3);
     }
 
     @keyframes welcomeIn {
       from {
         opacity: 0;
-        transform: scale(0.8);
+        transform: scale(.7) translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .welcomeBox::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 25px;
+      padding: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #00d9ff,
+        transparent,
+        #0066ff,
+        transparent
+      );
+      background-size: 300% 100%;
+      animation: borderMove 4s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes borderMove {
+      to {
+        background-position: 300% 0;
+      }
+    }
+
+    .welcomeLogo {
+      width: 115px;
+      filter:
+        drop-shadow(0 0 10px #4ceaff)
+        drop-shadow(0 0 30px #0077ff);
+      animation: logoFloat 3s infinite;
+    }
+
+    .welcomeBox h2 {
+      margin-top: 20px;
+      font-size: 27px;
+      font-weight: 900;
+      text-shadow:
+        0 0 10px #fff,
+        0 0 25px #00cfff;
+    }
+
+    .welcomeBox p {
+      margin-top: 12px;
+      color: #a7dcf5;
+      font-size: 15px;
+    }
+
+    .welcomeBox .small {
+      margin-top: 8px;
+      color: #628da3;
+      font-size: 12px;
+    }
+
+    #okButton {
+      margin-top: 28px;
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #5beaff;
+      border-radius: 13px;
+      background: linear-gradient(
+        90deg,
+        #073b55,
+        #0878a8,
+        #073b55
+      );
+      background-size: 200% 100%;
+      color: white;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      cursor: pointer;
+      box-shadow:
+        0 0 15px rgba(0,200,255,.25);
+      transition: .25s;
+    }
+
+    #okButton:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 30px rgba(0,210,255,.5);
+      background-position: 100% 0;
+    }
+
+    #okButton:active {
+      transform: scale(.96);
+    }
+
+    /* =========================
+       AVISO WEB NO DESARROLLADA
+    ========================== */
+
+    #notDeveloped {
+      position: fixed;
+      inset: 0;
+      z-index: 600;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0,0,0,.82);
+      backdrop-filter: blur(15px);
+    }
+
+    .notice {
+      max-width: 430px;
+      width: 100%;
+      text-align: center;
+      padding: 40px 25px;
+      border-radius: 25px;
+      background: #050d13;
+      border: 1px solid #1b9ed0;
+      box-shadow:
+        0 0 30px rgba(0,180,255,.2),
+        inset 0 0 40px rgba(0,100,255,.06);
+      animation: noticeIn .6s ease;
+    }
+
+    @keyframes noticeIn {
+      from {
+        opacity: 0;
+        transform: scale(.8);
       }
 
       to {
@@ -118,135 +400,250 @@
       }
     }
 
-    .welcomeLogo {
-      width: 110px;
-      margin-bottom: 18px;
+    .noticeIcon {
+      font-size: 55px;
+      filter: drop-shadow(0 0 15px #00cfff);
     }
 
-    .welcomeBox h2 {
-      font-size: 25px;
-      margin-bottom: 10px;
+    .notice h2 {
+      margin-top: 18px;
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
-    .welcomeBox p {
-      color: #aaa;
-      font-size: 15px;
-      margin-bottom: 25px;
+    .notice p {
+      margin-top: 12px;
+      color: #9bc8dc;
+      line-height: 1.6;
     }
 
-    #okButton {
-      width: 100%;
-      border: none;
-      border-radius: 12px;
-      padding: 13px;
-      background: white;
-      color: black;
-      font-size: 16px;
+    .closeNotice {
+      margin-top: 25px;
+      padding: 12px 35px;
+      border-radius: 10px;
+      border: 1px solid #37cfff;
+      background: transparent;
+      color: white;
       font-weight: bold;
       cursor: pointer;
-      transition: transform 0.2s ease;
     }
 
-    #okButton:active {
-      transform: scale(0.96);
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- Música -->
+  <!-- PARTÍCULAS -->
+  <div class="particles" id="particles"></div>
+
+  <!-- MÚSICA -->
   <audio id="music" loop preload="auto">
-    <source src="https://files.catbox.moe/a8nvz7.mp3" type="audio/mpeg">
+    <source
+      src="https://files.catbox.moe/a8nvz7.mp3"
+      type="audio/mpeg">
   </audio>
 
-  <!-- Pantalla inicial -->
-  <div id="tapScreen">
-    <h1>Frost Page</h1>
-    <p>Toca en la pantalla para entrar</p>
-  </div>
-
-  <!-- Página principal -->
-  <main id="mainPage">
+  <!-- PANTALLA DE ENTRADA -->
+  <section id="tapScreen">
 
     <img
-      id="mainLogo"
       src="logo-frost.png"
-      alt="Frost Logo"
-    >
+      class="enterLogo"
+      alt="Frost">
+
+    <div class="enterTitle">
+      FROST PAGE
+    </div>
+
+    <div class="enterLine"></div>
+
+    <div class="enterText">
+      ❄ TOCA EN LA PANTALLA PARA ENTRAR ❄
+    </div>
+
+  </section>
+
+  <!-- PÁGINA PRINCIPAL -->
+  <main id="mainPage">
+
+    <div class="glowCircle"></div>
+
+    <img
+      src="logo-frost.png"
+      id="mainLogo"
+      alt="Frost Logo">
+
+    <div class="frostTitle" id="frostTitle">
+      FROST PAGE
+    </div>
 
   </main>
 
-  <!-- Ventana de bienvenida -->
-  <div id="welcome">
+  <!-- BIENVENIDA -->
+  <section id="welcome">
 
     <div class="welcomeBox">
 
       <img
-        class="welcomeLogo"
         src="logo-frost.png"
-        alt="Frost Logo"
-      >
+        class="welcomeLogo"
+        alt="Frost">
 
-      <h2>Bienvenido a Frost Page</h2>
+      <h2>
+        BIENVENIDO A FROST PAGE
+      </h2>
 
       <p>
-        Tus mejores paneles gratis
+        ❄ Tus mejores paneles gratis ❄
       </p>
 
+      <div class="small">
+        El futuro comienza aquí...
+      </div>
+
       <button id="okButton">
-        OK
+        OK — ENTRAR
       </button>
 
     </div>
 
-  </div>
+  </section>
+
+  <!-- WEB NO DESARROLLADA -->
+  <section id="notDeveloped">
+
+    <div class="notice">
+
+      <div class="noticeIcon">
+        ❄
+      </div>
+
+      <h2>
+        WEB NO DESARROLLADA
+      </h2>
+
+      <p>
+        Esta página todavía está en desarrollo.
+        <br>
+        <strong>Disponible más tarde.</strong>
+      </p>
+
+      <button class="closeNotice" id="closeNotice">
+        CERRAR
+      </button>
+
+    </div>
+
+  </section>
 
   <script>
 
     const tapScreen = document.getElementById("tapScreen");
     const music = document.getElementById("music");
     const mainLogo = document.getElementById("mainLogo");
+    const frostTitle = document.getElementById("frostTitle");
     const welcome = document.getElementById("welcome");
     const okButton = document.getElementById("okButton");
+    const notDeveloped = document.getElementById("notDeveloped");
+    const closeNotice = document.getElementById("closeNotice");
+    const particles = document.getElementById("particles");
 
-    /* Entrar */
+    /* =========================
+       CREAR PARTÍCULAS
+    ========================== */
+
+    for (let i = 0; i < 45; i++) {
+
+      const particle = document.createElement("div");
+
+      particle.classList.add("particle");
+
+      particle.style.left =
+        Math.random() * 100 + "%";
+
+      particle.style.animationDuration =
+        (5 + Math.random() * 8) + "s";
+
+      particle.style.animationDelay =
+        Math.random() * 8 + "s";
+
+      particle.style.opacity =
+        Math.random();
+
+      particles.appendChild(particle);
+    }
+
+    /* =========================
+       ENTRAR
+    ========================== */
+
     tapScreen.addEventListener("click", async () => {
 
-      /* La reproducción ocurre directamente dentro del toque */
+      /* El audio empieza exactamente con el toque */
       try {
-        music.volume = 0.7;
+        music.volume = 0.65;
         await music.play();
       } catch (error) {
-        console.log("No se pudo reproducir el audio:", error);
+        console.log("Audio bloqueado:", error);
       }
 
-      /* Ocultar pantalla inicial */
       tapScreen.style.opacity = "0";
+      tapScreen.style.visibility = "hidden";
 
       setTimeout(() => {
+
         tapScreen.style.display = "none";
 
-        /* Mostrar logo */
         mainLogo.classList.add("show");
 
-        /* Mostrar bienvenida */
+        setTimeout(() => {
+          frostTitle.classList.add("show");
+        }, 400);
+
         setTimeout(() => {
           welcome.style.display = "flex";
-        }, 700);
+        }, 1100);
+
+      }, 900);
+
+    });
+
+    /* =========================
+       BOTÓN OK
+    ========================== */
+
+    okButton.addEventListener("click", () => {
+
+      welcome.style.opacity = "0";
+      welcome.style.transition = "opacity .5s ease";
+
+      setTimeout(() => {
+
+        welcome.style.display = "none";
+        welcome.style.opacity = "1";
+
+        /* Mostrar aviso */
+        notDeveloped.style.display = "flex";
 
       }, 500);
 
     });
 
-    /* Botón OK */
-    okButton.addEventListener("click", () => {
+    /* =========================
+       CERRAR AVISO
+    ========================== */
 
-      welcome.style.opacity = "0";
-      welcome.style.transition = "opacity 0.4s ease";
+    closeNotice.addEventListener("click", () => {
+
+      notDeveloped.style.opacity = "0";
+      notDeveloped.style.transition = "opacity .4s ease";
 
       setTimeout(() => {
-        welcome.style.display = "none";
+
+        notDeveloped.style.display = "none";
+        notDeveloped.style.opacity = "1";
+
       }, 400);
 
     });
@@ -254,4 +651,4 @@
   </script>
 
 </body>
-        </html>
+      </html>
