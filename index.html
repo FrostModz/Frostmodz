@@ -184,7 +184,10 @@ completamente gratis.
 
 <div class="frostLine"></div>
 
-<!-- ZYTRON -->
+<!-- =========================
+     ZYTRON - SOLO ZYTRON
+========================= -->
+
 <div class="productCard">
 
 <div class="topBadge">★ GRATIS</div>
@@ -205,14 +208,19 @@ Aplicación Zytron Pro para la comunidad de Frost.
 
 <div class="available">DISPONIBLE GRATIS</div>
 
-<button class="downloadButton" id="downloadButton">
+<button class="downloadButton" id="zytronDownloadButton">
 <span>⬇</span> DESCARGAR
 </button>
 
 </div>
 </div>
 
-<!-- BKL SENSI -->
+
+<!-- =========================
+     BKL SENSI - SOLO BKL
+     ZARCHIVER + FF MAX + LICENCIA
+========================= -->
+
 <div class="productCard">
 
 <div class="topBadge">★ GRATIS</div>
@@ -244,60 +252,38 @@ Aplicación Zytron Pro para la comunidad de Frost.
 </div>
 </section>
 
+
+<!-- =========================
+     MENÚ DE DESCARGAS
+========================= -->
+
 <section id="downloadMenu">
 
 <div class="downloadBox">
 
 <img src="logo-frost.png" class="downloadLogo" alt="Frost">
 
-<h2>FROST DOWNLOADS</h2>
+<h2 id="downloadTitle">FROST DOWNLOADS</h2>
 
-<p>Selecciona una opción</p>
+<p id="downloadSubtitle">Selecciona una opción</p>
 
-<div class="downloadList">
+<div class="downloadList" id="downloadList">
 
-<button class="downloadItem" data-download="zarchiver">
-<span class="itemIcon">📦</span>
-<span>ZArchiver</span>
-<b>›</b>
-</button>
-
-<button class="downloadItem" data-download="ffmax">
-<span class="itemIcon">🎮</span>
-<span>Free Fire MAX</span>
-<b>›</b>
-</button>
-
-<button class="downloadItem" data-download="zytron">
-<span class="itemIcon">🔐</span>
-<span>Zytron Pro Cracked</span>
-<b>›</b>
-</button>
-
-<button class="downloadItem" data-download="bklff">
-<span class="itemIcon">🎮</span>
-<span>Free Fire Max v2.126 GLOBAL</span>
-<b>›</b>
-</button>
-
-<button class="downloadItem" data-download="bkl">
-<span class="itemIcon">👑</span>
-<span>BKL SENSI Root v2.1</span>
-<b>›</b>
-</button>
-
-<button class="downloadItem" data-action="copy-key">
-<span class="itemIcon">🔑</span>
-<span>Licencia</span>
-<b>›</b>
-</button>
+<!-- Los botones se generan según el apartado -->
 
 </div>
 
-<button class="backButton" id="backButton">← VOLVER</button>
+<button class="backButton" id="backButton">
+← VOLVER
+</button>
 
 </div>
 </section>
+
+
+<!-- =========================
+     MODAL REDIRECCIÓN
+========================= -->
 
 <section id="redirectModal">
 
@@ -317,14 +303,18 @@ Aplicación Zytron Pro para la comunidad de Frost.
 <div id="loadingProgress"></div>
 </div>
 
-<button id="cancelRedirect">CANCELAR</button>
+<button id="cancelRedirect">
+CANCELAR
+</button>
 
 </div>
 </section>
 
+
 <div id="copyToast">
 ✅ Licencia copiada: Yeat
 </div>
+
 
 <script>
 
@@ -335,92 +325,134 @@ const frostTitle=document.getElementById("frostTitle");
 const welcome=document.getElementById("welcome");
 const okButton=document.getElementById("okButton");
 const frostPage=document.getElementById("frostPage");
+
 const downloadMenu=document.getElementById("downloadMenu");
-const downloadButton=document.getElementById("downloadButton");
-const bklDownloadButton=document.getElementById("bklDownloadButton");
+const downloadList=document.getElementById("downloadList");
+const downloadTitle=document.getElementById("downloadTitle");
+const downloadSubtitle=document.getElementById("downloadSubtitle");
+
+const zytronDownloadButton=
+document.getElementById("zytronDownloadButton");
+
+const bklDownloadButton=
+document.getElementById("bklDownloadButton");
+
 const backButton=document.getElementById("backButton");
+
 const redirectModal=document.getElementById("redirectModal");
 const countdown=document.getElementById("countdown");
 const loadingProgress=document.getElementById("loadingProgress");
 const cancelRedirect=document.getElementById("cancelRedirect");
+
 const particles=document.getElementById("particles");
 const copyToast=document.getElementById("copyToast");
 
+
+/* =========================
+   PARTÍCULAS
+========================= */
+
 for(let i=0;i<45;i++){
+
 const particle=document.createElement("div");
+
 particle.className="particle";
-particle.style.left=Math.random()*100+"%";
-particle.style.animationDuration=(5+Math.random()*8)+"s";
-particle.style.animationDelay=Math.random()*8+"s";
-particle.style.opacity=Math.random();
+
+particle.style.left=
+Math.random()*100+"%";
+
+particle.style.animationDuration=
+(5+Math.random()*8)+"s";
+
+particle.style.animationDelay=
+Math.random()*8+"s";
+
+particle.style.opacity=
+Math.random();
+
 particles.appendChild(particle);
+
 }
 
+
+/* =========================
+   ENTRAR
+========================= */
+
 tapScreen.addEventListener("click",async()=>{
+
 try{
+
 music.volume=.65;
+
 await music.play();
+
 }catch(error){
-console.log("No se pudo iniciar el audio:",error);
+
+console.log(
+"No se pudo iniciar el audio:",
+error
+);
+
 }
 
 tapScreen.style.opacity="0";
 tapScreen.style.visibility="hidden";
 
 setTimeout(()=>{
+
 tapScreen.style.display="none";
+
 mainLogo.classList.add("show");
 
 setTimeout(()=>{
+
 frostTitle.classList.add("show");
+
 },400);
 
 setTimeout(()=>{
+
 welcome.style.display="flex";
+
 },1100);
 
 },900);
+
 });
 
+
+/* =========================
+   OK
+========================= */
+
 okButton.addEventListener("click",()=>{
+
 welcome.style.opacity="0";
 
 setTimeout(()=>{
+
 welcome.style.display="none";
+
 welcome.style.opacity="1";
+
 frostPage.style.display="block";
+
 document.body.style.overflow="auto";
+
 },500);
+
 });
 
-downloadButton.addEventListener("click",()=>{
-frostPage.style.display="none";
-downloadMenu.style.display="block";
-});
 
-bklDownloadButton.addEventListener("click",()=>{
-frostPage.style.display="none";
-downloadMenu.style.display="block";
-});
-
-backButton.addEventListener("click",()=>{
-downloadMenu.style.display="none";
-frostPage.style.display="block";
-});
-
-/*
-IMPORTANTE:
-Se usan enlaces directos de MediaFire como destinos de navegación.
-La página no intenta abrir la imagen; el botón lleva al archivo correspondiente.
-*/
+/* =========================
+   ENLACES
+========================= */
 
 const downloadLinks={
 
 zarchiver:
 "https://www.mediafire.com/file/a1t5wcj7mfixics/ZArchiver_1.0.10.apk/file",
-
-ffmax:
-"https://www.mediafire.com/file/8k3oqgknrx709f3/Free+Fire+MAX_2.130.1.apks/file",
 
 zytron:
 "https://www.mediafire.com/file/n0m11n4a3bwwnkh/Zytron+Pro+Internal+V2.apk/file",
@@ -433,35 +465,175 @@ bkl:
 
 };
 
+
+/* =========================
+   CREAR BOTONES
+========================= */
+
+function createDownloadItem(icon,text,type){
+
+const button=document.createElement("button");
+
+button.className="downloadItem";
+
+button.dataset.download=type;
+
+button.innerHTML=`
+
+<span class="itemIcon">${icon}</span>
+
+<span>${text}</span>
+
+<b>›</b>
+
+`;
+
+downloadList.appendChild(button);
+
+}
+
+
+/* =========================
+   ABRIR APARTADO ZYTRON
+========================= */
+
+zytronDownloadButton.addEventListener("click",()=>{
+
+downloadList.innerHTML="";
+
+downloadTitle.textContent="ZYTRON DOWNLOADS";
+
+downloadSubtitle.textContent=
+"Descarga de Zytron";
+
+createDownloadItem(
+"🔐",
+"Zytron Pro Cracked",
+"zytron"
+);
+
+frostPage.style.display="none";
+
+downloadMenu.style.display="block";
+
+});
+
+
+/* =========================
+   ABRIR APARTADO BKL SENSI
+========================= */
+
+bklDownloadButton.addEventListener("click",()=>{
+
+downloadList.innerHTML="";
+
+downloadTitle.textContent="BKL SENSI DOWNLOADS";
+
+downloadSubtitle.textContent=
+"Selecciona una opción";
+
+createDownloadItem(
+"📦",
+"ZArchiver",
+"zarchiver"
+);
+
+createDownloadItem(
+"🎮",
+"Free Fire Max v2.126 GLOBAL",
+"bklff"
+);
+
+createDownloadItem(
+"👑",
+"BKL SENSI Root v2.1",
+"bkl"
+);
+
+const licenseButton=document.createElement("button");
+
+licenseButton.className="downloadItem";
+
+licenseButton.dataset.action="copy-key";
+
+licenseButton.innerHTML=`
+
+<span class="itemIcon">🔑</span>
+
+<span>Licencia</span>
+
+<b>›</b>
+
+`;
+
+downloadList.appendChild(licenseButton);
+
+frostPage.style.display="none";
+
+downloadMenu.style.display="block";
+
+});
+
+
+/* =========================
+   VOLVER
+========================= */
+
+backButton.addEventListener("click",()=>{
+
+downloadMenu.style.display="none";
+
+frostPage.style.display="block";
+
+});
+
+
+/* =========================
+   COPIAR LICENCIA
+========================= */
+
 function copyToClipboard(text){
 
-if(navigator.clipboard && window.isSecureContext){
+if(
+navigator.clipboard &&
+window.isSecureContext
+){
 
-navigator.clipboard.writeText(text)
+navigator.clipboard
+.writeText(text)
 .then(()=>showCopyToast())
 .catch(()=>fallbackCopy(text));
 
 }else{
+
 fallbackCopy(text);
+
 }
 
 }
+
 
 function fallbackCopy(text){
 
-const textarea=document.createElement("textarea");
+const textarea=
+document.createElement("textarea");
 
 textarea.value=text;
+
 textarea.style.position="fixed";
+
 textarea.style.left="-9999px";
 
 document.body.appendChild(textarea);
 
 textarea.focus();
+
 textarea.select();
 
 try{
+
 document.execCommand("copy");
+
 }catch(e){}
 
 document.body.removeChild(textarea);
@@ -470,28 +642,29 @@ showCopyToast();
 
 }
 
+
 function showCopyToast(){
 
 copyToast.classList.add("show");
 
 setTimeout(()=>{
+
 copyToast.classList.remove("show");
+
 },2500);
 
 }
 
+
+/* =========================
+   TEMPORIZADOR
+========================= */
+
 let redirectTimer=null;
 
-document.querySelectorAll(".downloadItem").forEach(button=>{
 
-button.addEventListener("click",()=>{
+function startDownload(type){
 
-if(button.dataset.action==="copy-key"){
-copyToClipboard("Yeat");
-return;
-}
-
-const type=button.dataset.download;
 const link=downloadLinks[type];
 
 if(!link)return;
@@ -499,11 +672,15 @@ if(!link)return;
 let seconds=3;
 
 countdown.textContent=seconds;
+
 loadingProgress.style.width="0%";
+
 redirectModal.style.display="flex";
 
 setTimeout(()=>{
+
 loadingProgress.style.width="33%";
+
 },50);
 
 clearInterval(redirectTimer);
@@ -521,18 +698,53 @@ if(seconds<=0){
 
 clearInterval(redirectTimer);
 
+redirectModal.style.display="none";
+
 /*
-Redirección directa al enlace del archivo.
+Usamos la navegación normal al enlace
+de MediaFire para evitar que el navegador
+intente mostrar la imagen de la página.
 */
-window.location.assign(link);
+
+window.location.href=link;
 
 }
 
 },1000);
 
-});
+}
+
+
+/* =========================
+   BOTONES DINÁMICOS
+========================= */
+
+downloadList.addEventListener("click",(event)=>{
+
+const button=
+event.target.closest(".downloadItem");
+
+if(!button)return;
+
+if(button.dataset.action==="copy-key"){
+
+copyToClipboard("Yeat");
+
+return;
+
+}
+
+const type=
+button.dataset.download;
+
+startDownload(type);
 
 });
+
+
+/* =========================
+   CANCELAR
+========================= */
 
 cancelRedirect.addEventListener("click",()=>{
 
@@ -546,10 +758,20 @@ loadingProgress.style.width="0%";
 
 });
 
-const menuButton=document.getElementById("menuButton");
+
+/* =========================
+   MENÚ
+========================= */
+
+const menuButton=
+document.getElementById("menuButton");
 
 menuButton.addEventListener("click",()=>{
-alert("❄ Frost Page\n\nMenú próximamente.");
+
+alert(
+"❄ Frost Page\n\nMenú próximamente."
+);
+
 });
 
 </script>
