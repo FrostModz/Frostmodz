@@ -89,7 +89,10 @@ background:radial-gradient(circle at 50% 5%,rgba(0,180,255,.16),transparent 35%)
 .downloadButton:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 0 35px rgba(0,190,255,.55)}
 .downloadButton:active{transform:scale(.97)}
 
-#downloadMenu{position:fixed;inset:0;z-index:700;display:none;overflow-y:auto;padding:35px 18px;background:radial-gradient(circle at 50% 20%,rgba(0,180,255,.15),transparent 35%),#03050a}
+#downloadMenu,#zytronMenu,#bklMenu{
+position:fixed;inset:0;z-index:700;display:none;overflow-y:auto;padding:35px 18px;
+background:radial-gradient(circle at 50% 20%,rgba(0,180,255,.15),transparent 35%),#03050a
+}
 .downloadBox{width:100%;max-width:500px;margin:auto;text-align:center}
 .downloadLogo{width:90px;filter:drop-shadow(0 0 12px #00d9ff) drop-shadow(0 0 30px #006cff)}
 .downloadBox h2{margin-top:18px;font-size:28px;text-shadow:0 0 15px #00d9ff}
@@ -100,7 +103,6 @@ background:radial-gradient(circle at 50% 5%,rgba(0,180,255,.16),transparent 35%)
 .itemIcon{width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(0,180,255,.12);font-size:21px}
 .downloadItem span:nth-child(2){flex:1;text-align:left}
 .downloadItem b{color:#00cfff;font-size:25px}
-
 .backButton{margin-top:30px;padding:13px 28px;border-radius:12px;border:1px solid #00bfff;background:transparent;color:white;font-weight:bold;cursor:pointer;transition:.25s}
 .backButton:hover{background:#008cff;box-shadow:0 0 20px rgba(0,190,255,.35)}
 
@@ -167,7 +169,6 @@ background:radial-gradient(circle at 50% 5%,rgba(0,180,255,.16),transparent 35%)
 <img src="logo-frost.png" alt="Frost">
 <span>FROST PAGE</span>
 </div>
-
 <button class="menuButton" id="menuButton">☰</button>
 </header>
 
@@ -184,10 +185,7 @@ completamente gratis.
 
 <div class="frostLine"></div>
 
-<!-- =========================
-     ZYTRON - SOLO ZYTRON
-========================= -->
-
+<!-- ZYTRON -->
 <div class="productCard">
 
 <div class="topBadge">★ GRATIS</div>
@@ -215,12 +213,7 @@ Aplicación Zytron Pro para la comunidad de Frost.
 </div>
 </div>
 
-
-<!-- =========================
-     BKL SENSI - SOLO BKL
-     ZARCHIVER + FF MAX + LICENCIA
-========================= -->
-
+<!-- BKL SENSI -->
 <div class="productCard">
 
 <div class="topBadge">★ GRATIS</div>
@@ -252,38 +245,87 @@ Aplicación Zytron Pro para la comunidad de Frost.
 </div>
 </section>
 
-
-<!-- =========================
-     MENÚ DE DESCARGAS
-========================= -->
-
-<section id="downloadMenu">
+<!-- MENÚ ZYTRON -->
+<section id="zytronMenu">
 
 <div class="downloadBox">
 
 <img src="logo-frost.png" class="downloadLogo" alt="Frost">
 
-<h2 id="downloadTitle">FROST DOWNLOADS</h2>
+<h2>ZYTRON DOWNLOADS</h2>
 
-<p id="downloadSubtitle">Selecciona una opción</p>
+<p>Selecciona una opción</p>
 
-<div class="downloadList" id="downloadList">
+<div class="downloadList">
 
-<!-- Los botones se generan según el apartado -->
+<button class="downloadItem" data-download="zytronZarchiver">
+<span class="itemIcon">📦</span>
+<span>ZArchiver Para instalar Free Fire</span>
+<b>›</b>
+</button>
+
+<button class="downloadItem" data-download="zytronFF">
+<span class="itemIcon">🎮</span>
+<span>Free Fire Max</span>
+<b>›</b>
+</button>
+
+<button class="downloadItem" data-action="zytron-key">
+<span class="itemIcon">🔑</span>
+<span>Key</span>
+<b>›</b>
+</button>
 
 </div>
 
-<button class="backButton" id="backButton">
-← VOLVER
-</button>
+<button class="backButton" id="zytronBackButton">← VOLVER</button>
 
 </div>
 </section>
 
+<!-- MENÚ BKL -->
+<section id="bklMenu">
 
-<!-- =========================
-     MODAL REDIRECCIÓN
-========================= -->
+<div class="downloadBox">
+
+<img src="logo-frost.png" class="downloadLogo" alt="Frost">
+
+<h2>BKL SENSI DOWNLOADS</h2>
+
+<p>Selecciona una opción</p>
+
+<div class="downloadList">
+
+<button class="downloadItem" data-download="bklff">
+<span class="itemIcon">🎮</span>
+<span>Free Fire Max v2.126 GLOBAL</span>
+<b>›</b>
+</button>
+
+<button class="downloadItem" data-download="bkl">
+<span class="itemIcon">👑</span>
+<span>BKL SENSI Root v2.1</span>
+<b>›</b>
+</button>
+
+<button class="downloadItem" data-download="bklzarchiver">
+<span class="itemIcon">📦</span>
+<span>ZArchiver</span>
+<b>›</b>
+</button>
+
+<button class="downloadItem" data-action="bkl-key">
+<span class="itemIcon">🔑</span>
+<span>Licencia</span>
+<b>›</b>
+</button>
+
+</div>
+
+<button class="backButton" id="bklBackButton">← VOLVER</button>
+
+</div>
+</section>
 
 <section id="redirectModal">
 
@@ -303,18 +345,14 @@ Aplicación Zytron Pro para la comunidad de Frost.
 <div id="loadingProgress"></div>
 </div>
 
-<button id="cancelRedirect">
-CANCELAR
-</button>
+<button id="cancelRedirect">CANCELAR</button>
 
 </div>
 </section>
 
-
 <div id="copyToast">
-✅ Licencia copiada: Yeat
+✅ Key copiada
 </div>
-
 
 <script>
 
@@ -326,314 +364,149 @@ const welcome=document.getElementById("welcome");
 const okButton=document.getElementById("okButton");
 const frostPage=document.getElementById("frostPage");
 
-const downloadMenu=document.getElementById("downloadMenu");
-const downloadList=document.getElementById("downloadList");
-const downloadTitle=document.getElementById("downloadTitle");
-const downloadSubtitle=document.getElementById("downloadSubtitle");
+const zytronDownloadButton=document.getElementById("zytronDownloadButton");
+const bklDownloadButton=document.getElementById("bklDownloadButton");
 
-const zytronDownloadButton=
-document.getElementById("zytronDownloadButton");
+const zytronMenu=document.getElementById("zytronMenu");
+const bklMenu=document.getElementById("bklMenu");
 
-const bklDownloadButton=
-document.getElementById("bklDownloadButton");
-
-const backButton=document.getElementById("backButton");
+const zytronBackButton=document.getElementById("zytronBackButton");
+const bklBackButton=document.getElementById("bklBackButton");
 
 const redirectModal=document.getElementById("redirectModal");
 const countdown=document.getElementById("countdown");
 const loadingProgress=document.getElementById("loadingProgress");
 const cancelRedirect=document.getElementById("cancelRedirect");
-
 const particles=document.getElementById("particles");
 const copyToast=document.getElementById("copyToast");
 
-
-/* =========================
-   PARTÍCULAS
-========================= */
-
 for(let i=0;i<45;i++){
-
 const particle=document.createElement("div");
-
 particle.className="particle";
-
-particle.style.left=
-Math.random()*100+"%";
-
-particle.style.animationDuration=
-(5+Math.random()*8)+"s";
-
-particle.style.animationDelay=
-Math.random()*8+"s";
-
-particle.style.opacity=
-Math.random();
-
+particle.style.left=Math.random()*100+"%";
+particle.style.animationDuration=(5+Math.random()*8)+"s";
+particle.style.animationDelay=Math.random()*8+"s";
+particle.style.opacity=Math.random();
 particles.appendChild(particle);
-
 }
 
-
-/* =========================
-   ENTRAR
-========================= */
-
 tapScreen.addEventListener("click",async()=>{
-
 try{
-
 music.volume=.65;
-
 await music.play();
-
 }catch(error){
-
-console.log(
-"No se pudo iniciar el audio:",
-error
-);
-
+console.log("No se pudo iniciar el audio:",error);
 }
 
 tapScreen.style.opacity="0";
 tapScreen.style.visibility="hidden";
 
 setTimeout(()=>{
-
 tapScreen.style.display="none";
-
 mainLogo.classList.add("show");
 
 setTimeout(()=>{
-
 frostTitle.classList.add("show");
-
 },400);
 
 setTimeout(()=>{
-
 welcome.style.display="flex";
-
 },1100);
 
 },900);
-
 });
 
-
-/* =========================
-   OK
-========================= */
-
 okButton.addEventListener("click",()=>{
-
 welcome.style.opacity="0";
 
 setTimeout(()=>{
-
 welcome.style.display="none";
-
 welcome.style.opacity="1";
-
 frostPage.style.display="block";
-
 document.body.style.overflow="auto";
-
 },500);
-
 });
 
+/* ABRIR MENÚ ZYTRON */
+zytronDownloadButton.addEventListener("click",()=>{
+frostPage.style.display="none";
+bklMenu.style.display="none";
+zytronMenu.style.display="block";
+});
 
-/* =========================
-   ENLACES
-========================= */
+/* ABRIR MENÚ BKL */
+bklDownloadButton.addEventListener("click",()=>{
+frostPage.style.display="none";
+zytronMenu.style.display="none";
+bklMenu.style.display="block";
+});
+
+/* VOLVER ZYTRON */
+zytronBackButton.addEventListener("click",()=>{
+zytronMenu.style.display="none";
+frostPage.style.display="block";
+});
+
+/* VOLVER BKL */
+bklBackButton.addEventListener("click",()=>{
+bklMenu.style.display="none";
+frostPage.style.display="block";
+});
+
+/* ENLACES */
 
 const downloadLinks={
 
-zarchiver:
+/* ZYTRON */
+zytronZarchiver:
 "https://www.mediafire.com/file/a1t5wcj7mfixics/ZArchiver_1.0.10.apk/file",
 
-zytron:
+zytronFF:
 "https://www.mediafire.com/file/n0m11n4a3bwwnkh/Zytron+Pro+Internal+V2.apk/file",
 
+/* BKL */
 bklff:
 "https://www.mediafire.com/file/sgq22y3nvdr121u/FFMAX_2.126.1_Global.apks/file",
 
 bkl:
-"https://www.mediafire.com/file/phr062nkz1zb5lu/BKL+SENSI-v2.1.apk/file"
+"https://www.mediafire.com/file/phr062nkz1zb5lu/BKL+SENSI-v2.1.apk/file",
+
+bklzarchiver:
+"https://www.mediafire.com/file/a1t5wcj7mfixics/ZArchiver_1.0.10.apk/file"
 
 };
 
-
-/* =========================
-   CREAR BOTONES
-========================= */
-
-function createDownloadItem(icon,text,type){
-
-const button=document.createElement("button");
-
-button.className="downloadItem";
-
-button.dataset.download=type;
-
-button.innerHTML=`
-
-<span class="itemIcon">${icon}</span>
-
-<span>${text}</span>
-
-<b>›</b>
-
-`;
-
-downloadList.appendChild(button);
-
-}
-
-
-/* =========================
-   ABRIR APARTADO ZYTRON
-========================= */
-
-zytronDownloadButton.addEventListener("click",()=>{
-
-downloadList.innerHTML="";
-
-downloadTitle.textContent="ZYTRON DOWNLOADS";
-
-downloadSubtitle.textContent=
-"Descarga de Zytron";
-
-createDownloadItem(
-"🔐",
-"Zytron Pro Cracked",
-"zytron"
-);
-
-frostPage.style.display="none";
-
-downloadMenu.style.display="block";
-
-});
-
-
-/* =========================
-   ABRIR APARTADO BKL SENSI
-========================= */
-
-bklDownloadButton.addEventListener("click",()=>{
-
-downloadList.innerHTML="";
-
-downloadTitle.textContent="BKL SENSI DOWNLOADS";
-
-downloadSubtitle.textContent=
-"Selecciona una opción";
-
-createDownloadItem(
-"📦",
-"ZArchiver",
-"zarchiver"
-);
-
-createDownloadItem(
-"🎮",
-"Free Fire Max v2.126 GLOBAL",
-"bklff"
-);
-
-createDownloadItem(
-"👑",
-"BKL SENSI Root v2.1",
-"bkl"
-);
-
-const licenseButton=document.createElement("button");
-
-licenseButton.className="downloadItem";
-
-licenseButton.dataset.action="copy-key";
-
-licenseButton.innerHTML=`
-
-<span class="itemIcon">🔑</span>
-
-<span>Licencia</span>
-
-<b>›</b>
-
-`;
-
-downloadList.appendChild(licenseButton);
-
-frostPage.style.display="none";
-
-downloadMenu.style.display="block";
-
-});
-
-
-/* =========================
-   VOLVER
-========================= */
-
-backButton.addEventListener("click",()=>{
-
-downloadMenu.style.display="none";
-
-frostPage.style.display="block";
-
-});
-
-
-/* =========================
-   COPIAR LICENCIA
-========================= */
+/* COPIAR KEY */
 
 function copyToClipboard(text){
 
-if(
-navigator.clipboard &&
-window.isSecureContext
-){
+if(navigator.clipboard && window.isSecureContext){
 
-navigator.clipboard
-.writeText(text)
+navigator.clipboard.writeText(text)
 .then(()=>showCopyToast())
 .catch(()=>fallbackCopy(text));
 
 }else{
-
 fallbackCopy(text);
-
 }
 
 }
-
 
 function fallbackCopy(text){
 
-const textarea=
-document.createElement("textarea");
+const textarea=document.createElement("textarea");
 
 textarea.value=text;
-
 textarea.style.position="fixed";
-
 textarea.style.left="-9999px";
 
 document.body.appendChild(textarea);
 
 textarea.focus();
-
 textarea.select();
 
 try{
-
 document.execCommand("copy");
-
 }catch(e){}
 
 document.body.removeChild(textarea);
@@ -642,29 +515,37 @@ showCopyToast();
 
 }
 
-
 function showCopyToast(){
 
 copyToast.classList.add("show");
 
 setTimeout(()=>{
-
 copyToast.classList.remove("show");
-
 },2500);
 
 }
 
-
-/* =========================
-   TEMPORIZADOR
-========================= */
+/* REDIRECCIÓN */
 
 let redirectTimer=null;
 
+document.querySelectorAll(".downloadItem").forEach(button=>{
 
-function startDownload(type){
+button.addEventListener("click",()=>{
 
+/* KEY ZYTRON */
+if(button.dataset.action==="zytron-key"){
+copyToClipboard("JFHAXOFC");
+return;
+}
+
+/* KEY BKL */
+if(button.dataset.action==="bkl-key"){
+copyToClipboard("Yeat");
+return;
+}
+
+const type=button.dataset.download;
 const link=downloadLinks[type];
 
 if(!link)return;
@@ -672,18 +553,14 @@ if(!link)return;
 let seconds=3;
 
 countdown.textContent=seconds;
-
 loadingProgress.style.width="0%";
-
 redirectModal.style.display="flex";
 
-setTimeout(()=>{
-
-loadingProgress.style.width="33%";
-
-},50);
-
 clearInterval(redirectTimer);
+
+setTimeout(()=>{
+loadingProgress.style.width="33%";
+},50);
 
 redirectTimer=setInterval(()=>{
 
@@ -698,53 +575,18 @@ if(seconds<=0){
 
 clearInterval(redirectTimer);
 
-redirectModal.style.display="none";
-
-/*
-Usamos la navegación normal al enlace
-de MediaFire para evitar que el navegador
-intente mostrar la imagen de la página.
-*/
-
+/* ABRIR EL ENLACE DEL ARCHIVO */
 window.location.href=link;
 
 }
 
 },1000);
 
-}
-
-
-/* =========================
-   BOTONES DINÁMICOS
-========================= */
-
-downloadList.addEventListener("click",(event)=>{
-
-const button=
-event.target.closest(".downloadItem");
-
-if(!button)return;
-
-if(button.dataset.action==="copy-key"){
-
-copyToClipboard("Yeat");
-
-return;
-
-}
-
-const type=
-button.dataset.download;
-
-startDownload(type);
+});
 
 });
 
-
-/* =========================
-   CANCELAR
-========================= */
+/* CANCELAR */
 
 cancelRedirect.addEventListener("click",()=>{
 
@@ -758,23 +600,15 @@ loadingProgress.style.width="0%";
 
 });
 
+/* MENÚ PRINCIPAL */
 
-/* =========================
-   MENÚ
-========================= */
-
-const menuButton=
-document.getElementById("menuButton");
+const menuButton=document.getElementById("menuButton");
 
 menuButton.addEventListener("click",()=>{
-
-alert(
-"❄ Frost Page\n\nMenú próximamente."
-);
-
+alert("❄ Frost Page\n\nMenú próximamente.");
 });
 
 </script>
 
 </body>
-  </html>
+     </html>
