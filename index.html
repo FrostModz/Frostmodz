@@ -1486,4 +1486,747 @@
 
   <!-- =====================================================
        BIENVENIDA
-  =======================
+  ===================================================== -->
+
+  <section id="welcome">
+
+    <div class="welcomeBox">
+
+      <img
+        src="logo-frost.png"
+        class="welcomeLogo"
+        alt="Frost"
+      >
+
+      <h2>
+        BIENVENIDO A FROST PAGE
+      </h2>
+
+      <p>
+        ❄ Tus mejores paneles gratis ❄
+      </p>
+
+      <div class="welcomeSmall">
+        Todo el contenido de Frost en un solo lugar.
+      </div>
+
+      <button id="okButton">
+        OK — ENTRAR
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       FROST PAGE
+  ===================================================== -->
+
+  <section id="frostPage">
+
+
+    <header class="frostHeader">
+
+      <div class="headerLogo">
+
+        <img
+          src="logo-frost.png"
+          alt="Frost"
+        >
+
+        <span>
+          FROST PAGE
+        </span>
+
+      </div>
+
+
+      <button
+        class="menuButton"
+        id="menuButton"
+      >
+        ☰
+      </button>
+
+    </header>
+
+
+    <div class="frostContent">
+
+
+      <div class="heroIcon">
+        ❄
+      </div>
+
+
+      <h1>
+
+        Bienvenido a
+        <span>Frost Page</span>
+
+      </h1>
+
+
+      <p class="subtitle">
+
+        Los mejores archivos y aplicaciones,
+        completamente gratis.
+
+      </p>
+
+
+      <div class="frostLine"></div>
+
+
+      <!-- =================================================
+           PRODUCTO
+      ================================================= -->
+
+      <div class="productCard">
+
+
+        <div class="topBadge">
+          ★ GRATIS
+        </div>
+
+
+        <div class="imageContainer">
+
+          <img
+            src="IMG-20260819-WA0656.jpg"
+            alt="Frost Page"
+          >
+
+        </div>
+
+
+        <div class="productInfo">
+
+
+          <div class="category">
+            ❄ FROST PAGE
+          </div>
+
+
+          <h2>
+            Frost Page
+          </h2>
+
+
+          <p>
+
+            Aplicaciones y archivos seleccionados
+            especialmente para la comunidad de Frost.
+
+          </p>
+
+
+          <div class="available">
+            DISPONIBLE GRATIS
+          </div>
+
+
+          <button
+            class="downloadButton"
+            id="downloadButton"
+          >
+
+            <span>
+              ⬇
+            </span>
+
+            DESCARGAR
+
+          </button>
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       MENÚ DE DESCARGAS
+  ===================================================== -->
+
+  <section id="downloadMenu">
+
+
+    <div class="downloadBox">
+
+
+      <img
+        src="logo-frost.png"
+        class="downloadLogo"
+        alt="Frost"
+      >
+
+
+      <h2>
+        FROST DOWNLOADS
+      </h2>
+
+
+      <p>
+        Selecciona una opción
+      </p>
+
+
+      <div class="downloadList">
+
+
+        <!-- ZARCHIVER -->
+
+        <button
+          class="downloadItem"
+          data-download="zarchiver"
+        >
+
+          <span class="itemIcon">
+            📦
+          </span>
+
+          <span>
+            ZArchiver
+          </span>
+
+          <b>
+            ›
+          </b>
+
+        </button>
+
+
+        <!-- FREE FIRE MAX -->
+
+        <button
+          class="downloadItem"
+          data-download="ffmax"
+        >
+
+          <span class="itemIcon">
+            🎮
+          </span>
+
+          <span>
+            Free Fire MAX
+          </span>
+
+          <b>
+            ›
+          </b>
+
+        </button>
+
+
+        <!-- ZYTRON -->
+
+        <button
+          class="downloadItem"
+          data-download="zytron"
+        >
+
+          <span class="itemIcon">
+            🔐
+          </span>
+
+          <span>
+            Zytron Pro Cracked
+          </span>
+
+          <b>
+            ›
+          </b>
+
+        </button>
+
+
+      </div>
+
+
+      <button
+        class="backButton"
+        id="backButton"
+      >
+
+        ← VOLVER
+
+      </button>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       MODAL REDIRECCIÓN
+  ===================================================== -->
+
+  <section id="redirectModal">
+
+
+    <div class="redirectBox">
+
+
+      <img
+        src="logo-frost.png"
+        alt="Frost"
+      >
+
+
+      <div class="redirectIcon">
+        ❄
+      </div>
+
+
+      <h2>
+        Serás Redirigido
+      </h2>
+
+
+      <p>
+        Preparando tu descarga...
+      </p>
+
+
+      <div id="countdown">
+        3
+      </div>
+
+
+      <div class="loadingBar">
+
+        <div
+          id="loadingProgress"
+        ></div>
+
+      </div>
+
+
+      <button id="cancelRedirect">
+        CANCELAR
+      </button>
+
+
+    </div>
+
+
+  </section>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ===================================================== -->
+
+  <script>
+
+
+    /* =====================================================
+       ELEMENTOS
+    ===================================================== */
+
+    const tapScreen =
+      document.getElementById("tapScreen");
+
+    const music =
+      document.getElementById("music");
+
+    const mainLogo =
+      document.getElementById("mainLogo");
+
+    const frostTitle =
+      document.getElementById("frostTitle");
+
+    const welcome =
+      document.getElementById("welcome");
+
+    const okButton =
+      document.getElementById("okButton");
+
+    const frostPage =
+      document.getElementById("frostPage");
+
+    const downloadMenu =
+      document.getElementById("downloadMenu");
+
+    const downloadButton =
+      document.getElementById("downloadButton");
+
+    const backButton =
+      document.getElementById("backButton");
+
+    const redirectModal =
+      document.getElementById("redirectModal");
+
+    const countdown =
+      document.getElementById("countdown");
+
+    const loadingProgress =
+      document.getElementById("loadingProgress");
+
+    const cancelRedirect =
+      document.getElementById("cancelRedirect");
+
+    const particles =
+      document.getElementById("particles");
+
+
+    /* =====================================================
+       PARTÍCULAS
+    ===================================================== */
+
+    for (
+      let i = 0;
+      i < 45;
+      i++
+    ) {
+
+      const particle =
+        document.createElement("div");
+
+      particle.className =
+        "particle";
+
+      particle.style.left =
+        Math.random() * 100 + "%";
+
+      particle.style.animationDuration =
+        (5 + Math.random() * 8) + "s";
+
+      particle.style.animationDelay =
+        Math.random() * 8 + "s";
+
+      particle.style.opacity =
+        Math.random();
+
+      particles.appendChild(
+        particle
+      );
+
+    }
+
+
+    /* =====================================================
+       ENTRAR A FROST
+    ===================================================== */
+
+    tapScreen.addEventListener(
+      "click",
+      async () => {
+
+        try {
+
+          music.volume = 0.65;
+
+          await music.play();
+
+        } catch (error) {
+
+          console.log(
+            "No se pudo iniciar el audio:",
+            error
+          );
+
+        }
+
+
+        tapScreen.style.opacity = "0";
+
+        tapScreen.style.visibility =
+          "hidden";
+
+
+        setTimeout(() => {
+
+          tapScreen.style.display =
+            "none";
+
+
+          mainLogo.classList.add(
+            "show"
+          );
+
+
+          setTimeout(() => {
+
+            frostTitle.classList.add(
+              "show"
+            );
+
+          }, 400);
+
+
+          setTimeout(() => {
+
+            welcome.style.display =
+              "flex";
+
+          }, 1100);
+
+
+        }, 900);
+
+      }
+    );
+
+
+    /* =====================================================
+       OK → FROST PAGE
+    ===================================================== */
+
+    okButton.addEventListener(
+      "click",
+      () => {
+
+        welcome.style.opacity = "0";
+
+        setTimeout(() => {
+
+          welcome.style.display =
+            "none";
+
+          welcome.style.opacity =
+            "1";
+
+
+          frostPage.style.display =
+            "block";
+
+
+          document.body.style.overflow =
+            "auto";
+
+        }, 500);
+
+      }
+    );
+
+
+    /* =====================================================
+       ABRIR DESCARGAS
+    ===================================================== */
+
+    downloadButton.addEventListener(
+      "click",
+      () => {
+
+        frostPage.style.display =
+          "none";
+
+        downloadMenu.style.display =
+          "block";
+
+      }
+    );
+
+
+    /* =====================================================
+       VOLVER
+    ===================================================== */
+
+    backButton.addEventListener(
+      "click",
+      () => {
+
+        downloadMenu.style.display =
+          "none";
+
+        frostPage.style.display =
+          "block";
+
+      }
+    );
+
+
+    /* =====================================================
+       ENLACES
+       
+       Se construyen por partes para mantenerlos
+       separados dentro del código.
+    ===================================================== */
+
+    const downloadLinks = {
+
+      zarchiver:
+        [
+          "https://www.",
+          "mediafire.com/file/",
+          "a1t5wcj7mfixics/",
+          "ZArchiver_1.0.10.apk/file"
+        ].join(""),
+
+      ffmax:
+        [
+          "https://www.",
+          "mediafire.com/file/",
+          "8k3oqgknrx709f3/",
+          "Free+Fire+MAX_2.130.1.apks/file"
+        ].join(""),
+
+      zytron:
+        [
+          "https://www.",
+          "mediafire.com/file/",
+          "n0m11n4a3bwwnkh/",
+          "Zytron+Pro+Internal+V2.apk/file"
+        ].join("")
+
+    };
+
+
+    /* =====================================================
+       TEMPORIZADOR
+    ===================================================== */
+
+    let redirectTimer = null;
+
+
+    document
+      .querySelectorAll(".downloadItem")
+      .forEach(button => {
+
+
+        button.addEventListener(
+          "click",
+          () => {
+
+
+            const type =
+              button.dataset.download;
+
+
+            const link =
+              downloadLinks[type];
+
+
+            if (!link) {
+              return;
+            }
+
+
+            let seconds = 3;
+
+
+            countdown.textContent =
+              seconds;
+
+
+            loadingProgress.style.width =
+              "0%";
+
+
+            redirectModal.style.display =
+              "flex";
+
+
+            setTimeout(() => {
+
+              loadingProgress.style.width =
+                "33%";
+
+            }, 50);
+
+
+            redirectTimer =
+              setInterval(() => {
+
+
+                seconds--;
+
+
+                countdown.textContent =
+                  seconds;
+
+
+                loadingProgress.style.width =
+                  ((3 - seconds) / 3 * 100)
+                  + "%";
+
+
+                if (seconds <= 0) {
+
+
+                  clearInterval(
+                    redirectTimer
+                  );
+
+
+                  window.location.href =
+                    link;
+
+
+                }
+
+
+              }, 1000);
+
+
+          }
+        );
+
+      });
+
+
+    /* =====================================================
+       CANCELAR REDIRECCIÓN
+    ===================================================== */
+
+    cancelRedirect.addEventListener(
+      "click",
+      () => {
+
+
+        clearInterval(
+          redirectTimer
+        );
+
+
+        redirectModal.style.display =
+          "none";
+
+
+        countdown.textContent =
+          "3";
+
+
+        loadingProgress.style.width =
+          "0%";
+
+
+      }
+    );
+
+
+    /* =====================================================
+       BOTÓN MENÚ
+    ===================================================== */
+
+    const menuButton =
+      document.getElementById(
+        "menuButton"
+      );
+
+
+    menuButton.addEventListener(
+      "click",
+      () => {
+
+        alert(
+          "❄ Frost Page\n\nMenú próximamente."
+        );
+
+      }
+    );
+
+
+  </script>
+
+</body>
+  </html>
