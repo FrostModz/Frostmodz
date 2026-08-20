@@ -1156,6 +1156,34 @@
 
     }
 
+    /* =====================================================
+       TOAST DE COPIADO
+    ===================================================== */
+
+    #copyToast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      z-index: 999999;
+      padding: 14px 28px;
+      border-radius: 14px;
+      background: linear-gradient(90deg, #008cff, #00cfff);
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+      letter-spacing: 1px;
+      box-shadow: 0 0 25px rgba(0, 200, 255, 0.5);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.17, 0.67, 0.3, 1.3);
+      pointer-events: none;
+    }
+
+    #copyToast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
 
     /* =====================================================
        MODAL REDIRECCIÓN
@@ -1747,6 +1775,28 @@
         </button>
 
 
+        <!-- KEY (NUEVO) -->
+
+        <button
+          class="downloadItem"
+          data-action="copy-key"
+        >
+
+          <span class="itemIcon">
+            🔑
+          </span>
+
+          <span>
+            Key
+          </span>
+
+          <b>
+            ›
+          </b>
+
+        </button>
+
+
       </div>
 
 
@@ -1817,8 +1867,16 @@
 
     </div>
 
-
   </section>
+
+
+  <!-- =====================================================
+       TOAST DE COPIADO
+  ===================================================== -->
+
+  <div id="copyToast">
+    ✅ Key copiada: JFHAXOFC
+  </div>
 
 
   <!-- =====================================================
@@ -1876,6 +1934,9 @@
 
     const particles =
       document.getElementById("particles");
+
+    const copyToast =
+      document.getElementById("copyToast");
 
 
     /* =====================================================
@@ -2047,9 +2108,6 @@
 
     /* =====================================================
        ENLACES
-       
-       Se construyen por partes para mantenerlos
-       separados dentro del código.
     ===================================================== */
 
     const downloadLinks = {
@@ -2082,7 +2140,36 @@
 
 
     /* =====================================================
-       TEMPORIZADOR
+       FUNCIÓN PARA COPIAR AL PORTAPAPELES
+    ===================================================== */
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showCopyToast();
+      }).catch(err => {
+        // Método alternativo si el primero falla
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        showCopyToast();
+      });
+    }
+
+    function showCopyToast() {
+      copyToast.classList.add("show");
+      setTimeout(() => {
+        copyToast.classList.remove("show");
+      }, 2500);
+    }
+
+
+    /* =====================================================
+       TEMPORIZADOR DE DESCARGA
     ===================================================== */
 
     let redirectTimer = null;
@@ -2097,6 +2184,11 @@
           "click",
           () => {
 
+            // Si es la acción de copiar key
+            if (button.dataset.action === "copy-key") {
+              copyToClipboard("JFHAXOFC");
+              return;
+            }
 
             const type =
               button.dataset.download;
@@ -2229,4 +2321,4 @@
   </script>
 
 </body>
-  </html>
+</html>
