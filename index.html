@@ -777,6 +777,35 @@ Archivos y herramientas de Zytron para la comunidad de Frost.
 </div>
 </div>
 
+<!-- ==================== P2077KNG ==================== -->
+
+<div class="productCard">
+
+<div class="topBadge">★ GRATIS</div>
+
+<div class="imageContainer">
+<img src="IMG-20260727-WA0181.jpg" alt="P2077KNG">
+</div>
+
+<div class="productInfo">
+
+<div class="category">🔥 P2077KNG</div>
+
+<h2>P2077KNG</h2>
+
+<p>
+Archivos de P2077KNG para la comunidad de Frost.
+</p>
+
+<div class="available">DISPONIBLE GRATIS</div>
+
+<button class="downloadButton" id="p2077kngDownloadButton">
+⬇ DESCARGAR P2077KNG
+</button>
+
+</div>
+</div>
+
 </div>
 </section>
 
@@ -850,6 +879,7 @@ const downloadSubtitle=document.getElementById("downloadSubtitle");
 
 const zytronDownloadButton=document.getElementById("zytronDownloadButton");
 const bklDownloadButton=document.getElementById("bklDownloadButton");
+const p2077kngDownloadButton=document.getElementById("p2077kngDownloadButton");
 
 const backButton=document.getElementById("backButton");
 
@@ -1010,6 +1040,48 @@ key:"JFHAXOFC"
 ];
 
 
+/* ==================== DATOS P2077KNG ==================== */
+
+const p2077kngItems=[
+
+{
+icon:"📦",
+name:"lib version 9.0 Test Version 2",
+type:"download",
+url:"https://www.mediafire.com/file/3egpg9hbsgvs0ux/P2077kng-lib-9.0-ob54-test2.zip/file"
+},
+
+{
+icon:"📦",
+name:"MT MANAGER",
+type:"",
+url:"https://www.mediafire.com/file/7qvl32wxaamtwxh/MT+.apk/file"
+},
+
+{
+icon:"📦",
+name:"Generar key",
+type:"Ir a generar key",
+url:"https://p20kng.digamber.in"
+},
+
+{
+icon:"📦",
+name:"Free Fire 64 Bits",
+type:"download",
+url:"https://www.mediafire.com/file/hrauhp5lpd0qd2e/FF+NORMAL+64BIT+v1.126.1.xapk/file"
+},
+
+{
+icon:"📦",
+name:"Free Fire 32 Bits",
+type:"https://www.mediafire.com/file/r0wqi7ljgaxlb6q/FF+NORMAL+32BIT+v1.126.1.xapk/file",
+url:""
+}
+
+];
+
+
 /* ==================== ABRIR MENÚ ==================== */
 
 let currentItems=[];
@@ -1082,6 +1154,18 @@ bklDownloadButton.addEventListener("click",()=>{
 openDownloadMenu(
 "BKL SENSI DOWNLOADS",
 bklItems
+);
+
+});
+
+
+/* ==================== BOTÓN P2077KNG ==================== */
+
+p2077kngDownloadButton.addEventListener("click",()=>{
+
+openDownloadMenu(
+"P2077KNG DOWNLOADS",
+p2077kngItems
 );
 
 });
@@ -1200,11 +1284,6 @@ clearInterval(redirectTimer);
 
 redirectModal.style.display="none";
 
-/*
-Abrimos directamente el enlace del archivo.
-No usamos la imagen como destino.
-*/
-
 window.location.href=link;
 
 }
@@ -1238,7 +1317,8 @@ menuButton.addEventListener("click",()=>{
 alert(
 "❄ FROST PAGE\n\n"+
 "🔐 ZYTRON — Apartado independiente\n"+
-"👑 BKL SENSI — Apartado independiente"
+"👑 BKL SENSI — Apartado independiente\n"+
+"🔥 P2077KNG — Apartado independiente"
 );
 
 });
@@ -1246,4 +1326,4 @@ alert(
 </script>
 
 </body>
-     </html>
+  </html>
